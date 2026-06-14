@@ -5,19 +5,9 @@
 **Vendor:** Luculent Systems, LLC  
 **Install Path:** `C:\Program Files\Luculent Systems\AltA2DP\`
 
-Tl;dr:
+**The key insight: The driver blindly reads codec config from HKLM:\SYSTEM\CurrentControlSet\Services\AltA2DP\Parameters\Devices\Next\{bt_address} and uses it. Write the right registry DWORDs → cycle the BT device → driver reconnects with your chosen codec. That's all the official GUI does.**
 
-Alternative A2DP Driver — TL;DRAlternative A2DP Driver — TL;DR
-
-A custom Windows Bluetooth audio driver that swaps out Microsoft's default A2DP stack to enable high-quality codecs (AAC, aptX, LDAC, etc.).
-Architecture in 3 bullets:
-
-AltA2DP.sys — kernel driver that does all the actual audio encoding (SBC/AAC/aptX/LDAC). Zero license checks here.
-AltA2dpSVC.exe — background service managing device connect/disconnect lifecycle
-AltA2dpConfig.exe — GUI that just reads/writes registry values + enforces licensing (Ed25519)
-
-**The key insight: The driver blindly reads codec config from HKLM:\SYSTEM\CurrentControlSet\Services\AltA2DP\Parameters\Devices\Next\{bt_address} and uses it. Write the right registry DWORDs → cycle the BT device → driver reconnects with your chosen codec. That's all the official GUI does.
-** 
+Your license key pays for the gui but anyone can make the gui, its impossible to FORGE a license key but you dont need one just make your own wrapper ui
 ---
 
 ## Table of Contents
